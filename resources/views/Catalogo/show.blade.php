@@ -10,7 +10,7 @@
                     <p class="card-text">{{ $producto->description ?? 'Descripción no disponible' }}</p>
 
                     <!-- Mostrar precio, si existe -->
-                    <p><strong>Precio: </strong>${{ $producto->precio ?? 'No disponible' }}</p> <!-- Asumiendo que 'precio' está disponible en el modelo -->
+                    <p><strong>Precio: </strong>${{ $producto->precio ?? 'No disponible' }}</p>
                 </div>
             </div>
         @else
