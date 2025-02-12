@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogoController;
+use App\Http\Controllers\SuitController;
+
 
 
 /*
@@ -22,3 +24,5 @@ Route::get('/', function () {
 Route::get('/catalogo', [CatalogoController::class, 'index'])->name('catalogo.index');
 Route::get('/catalogo/{id}', [CatalogoController::class, 'show'])->name('catalogo.show');
 
+Route::get('/suit', [SuitController::class, 'index'])->name('suit.index');
+Route::get('/suit/{id}', [SuitController::class, 'show'])->name('suit.show');
