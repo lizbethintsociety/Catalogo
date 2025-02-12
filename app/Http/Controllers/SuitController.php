@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
         public function index()
         {
             $suits = \DB::table('suits')->get();
+
             
             return view('suit.index', compact('suits'));
         }
@@ -17,12 +18,14 @@ use Illuminate\Http\Request;
         public function show($id)
         {
             $suit = \DB::table('suits')->where('id', $id)->first();
+            $services = \DB::table('services')->get();
+
         
             if (!$suit) {
                 return redirect()->route('suit.index')->with('error', 'Habitación no encontrada');
             }
         
-            return view('suit.show', compact('suit'));
+            return view('suit.show', compact('suit','services'));
         }
         
         

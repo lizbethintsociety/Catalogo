@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\SuitController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\RateController;
+
 
 
 
@@ -26,3 +29,11 @@ Route::get('/catalogo/{id}', [CatalogoController::class, 'show'])->name('catalog
 
 Route::get('/suit', [SuitController::class, 'index'])->name('suit.index');
 Route::get('/suit/{id}', [SuitController::class, 'show'])->name('suit.show');
+
+
+Route::get('/rate', [RateController::class, 'index'])->name('rate.index');
+Route::get('/rate/{id}', [RateController::class, 'show'])->name('rate.show');
+
+
+Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+Route::get('/service/{id}', [ServiceController::class, 'show'])->name('service.show');

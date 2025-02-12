@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $suit->name }}</title>
+    <title>{{ $rate->name }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -39,15 +39,15 @@
 
     <div class="container mx-auto mt-6 px-4">
         <div class="w-full">
-            <img src="{{ asset('images/' . ($suit->image ?? 'default.png')) }}" 
+           <img src="{{ asset('images/' . ($rate->image ?? 'default.png')) }}"
                  class="w-full h-80 object-cover rounded-lg shadow-md">
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h1 class="text-3xl font-bold">{{ $suit->name }}</h1>
+            <h1 class="text-3xl font-bold">{{ $rate->name }}</h1>
                 <h2 class="text-lg font-semibold text-gray-600">Descripción</h2>
-                <p class="text-gray-700 mt-2">{{ $suit->description }}</p>
+                {{-- <p class="text-gray-700 mt-2">{{ $rate->description }}</p> --}}
 
                 <p class="mt-4 text-xl font-semibold">
                     Precio: <span class="text-black">Bs</span>
@@ -69,7 +69,7 @@
                         @endforeach
                     </div>
 
-                    {{--  <button type="submit" class="mt-4 bg-blue-600 text-white py-2 px-4 rounded">Agregar Servicios</button> --}}
+                    {{--    <button type="submit" class="mt-4 bg-blue-600 text-white py-2 px-4 rounded">Agregar Servicios</button> --}}
 
                 <div class="mt-4 border-t pt-4">
                        <p><strong>Total Habitacion:</strong> <span >0.00</span> Bs</p>
@@ -79,6 +79,6 @@
             </div>
         </div>
     </div>
-    @include('reservation.register')
+    @include('reservation.registerRate')
 </body>
 </html>
