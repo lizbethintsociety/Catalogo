@@ -38,10 +38,11 @@
     @include('components.navbar') 
 
     <div class="container mx-auto mt-6 px-4">
-        <div class="w-full">
-            <img src="{{ asset('images/' . ($suit->image ?? 'default.png')) }}" 
-                 class="w-full h-80 object-cover rounded-lg shadow-md">
-        </div>
+        <div class="w-full flex justify-center items-center">
+        <img src="{{ $suit->image ?? asset('images/default.png') }}" 
+            class="object-cover rounded-lg shadow-md" 
+            style="width: 10cm; height: 8cm;">
+    </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -50,7 +51,7 @@
                 <p class="text-gray-700 mt-2">{{ $suit->description }}</p>
 
                 <p class="mt-4 text-xl font-semibold">
-                    Precio: <span class="text-black">Bs</span>
+                    Precio: <span class="text-black"> {{ $first_price }} Bs /Hora</span>
                 </p>
             </div>
 
@@ -62,17 +63,18 @@
                     @csrf
                     <div class="space-y-4">
                         @foreach($services as $service)
-                            <div class="flex items-center">
-                                <input type="checkbox" name="services[]" value="{{ $service->id }}" id="service-{{ $service->id }}" data-price="{{ $service->price }}" class="mr-2">
-                                <label for="service-{{ $service->id }}" class="text-sm">{{ $service->name }} - {{ $service->price }} Bs</label>
-                            </div>
+                            @if($service->is_visible == 1) 
+                                <div class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="{{ $service->id }}" id="service-{{ $service->id }}" data-price="{{ $service->price }}" class="mr-2">
+                                    <label for="service-{{ $service->id }}" class="text-sm">{{ $service->name }} - {{ $service->price }} Bs</label>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
 
-                    {{--  <button type="submit" class="mt-4 bg-blue-600 text-white py-2 px-4 rounded">Agregar Servicios</button> --}}
 
                 <div class="mt-4 border-t pt-4">
-                       <p><strong>Total Habitacion:</strong> <span >0.00</span> Bs</p>
+                       <p><strong>Total Habitacion:</strong> <span >{{ $first_price }} </span> Bs</p>
                     <p><strong>Total Extras:</strong> <span id="total-extras">0.00</span> Bs</p>
                     <p class="text-xl font-bold"><strong>Total:</strong> <span id="total-general"></span></p>
                 </div>

@@ -21,9 +21,8 @@
                     <div class="relative bg-white shadow-md rounded-lg overflow-hidden group" 
                          style="width: 10cm; height: 6.5cm;">
                          
-                        <img src="{{ asset('images/' . ($suit->image ?? 'default.png')) }}" 
-                             alt="{{ $suit->name }}" 
-                             class="w-full h-40 object-cover">
+                         <img src="{{ $suit->image ?? asset('images/default.png') }}" class="w-full h-80 object-cover rounded-lg shadow-md">
+
 
                         <div class="p-4">
                             <h2 class="text-lg font-semibold">{{ $suit->name }}</h2>

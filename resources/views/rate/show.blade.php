@@ -47,7 +47,7 @@
             <div class="bg-white p-6 rounded-lg shadow-lg">
             <h1 class="text-3xl font-bold">{{ $rate->name }}</h1>
                 <h2 class="text-lg font-semibold text-gray-600">Descripción</h2>
-                {{-- <p class="text-gray-700 mt-2">{{ $rate->description }}</p> --}}
+                 <p class="text-gray-700 mt-2">{{ $rate->description }}</p> 
 
                 <p class="mt-4 text-xl font-semibold">
                     Precio: <span class="text-black">Bs</span>
@@ -62,10 +62,12 @@
                     @csrf
                     <div class="space-y-4">
                         @foreach($services as $service)
-                            <div class="flex items-center">
-                                <input type="checkbox" name="services[]" value="{{ $service->id }}" id="service-{{ $service->id }}" data-price="{{ $service->price }}" class="mr-2">
-                                <label for="service-{{ $service->id }}" class="text-sm">{{ $service->name }} - {{ $service->price }} Bs</label>
-                            </div>
+                        @if($service->is_visible == 1) 
+                                <div class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="{{ $service->id }}" id="service-{{ $service->id }}" data-price="{{ $service->price }}" class="mr-2">
+                                    <label for="service-{{ $service->id }}" class="text-sm">{{ $service->name }} - {{ $service->price }} Bs</label>
+                                </div>
+                            @endif                         
                         @endforeach
                     </div>
 
